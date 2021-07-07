@@ -6,6 +6,12 @@ import (
 	"goTutorial3/structTest"
 )
 
+type person struct {
+	name string
+	age int
+	country string
+}
+
 func main() {
 
 	//variadic
@@ -94,6 +100,36 @@ func main() {
 	//nested struct
 	structTest.NestedStruct()
 
+	fmt.Println()
+
+	//methods
+	person1 := person{
+		name:    "Ben",
+		age:     40,
+		country: "Sweden",
+	}
+
+	fmt.Println("Original age: ", person1.age)
+
+	//value receiver method
+	newAge := person1.increaseAge(2)
+	fmt.Println("After increase method ", person1.age)
+	fmt.Println("New age ", newAge)
+
+	fmt.Println()
+
+	//pointer receiver method
+	newAge2 := person1.decreaseAge(5)
+	fmt.Println("After decrease method ", person1.age)
+	fmt.Println("New age ", newAge2)
+
+	fmt.Println()
+
+	//normal function
+	newName := changeName(person1, "Mike")
+	fmt.Println("After change name function ", person1.name)
+	fmt.Println("newName ", newName)
+
 }
 
 func findNum(findMe int, list...int) {
@@ -126,4 +162,26 @@ func printChars(s string) {
 	for i := 0; i < len(runes); i++ {
 		fmt.Printf("Rune %c \n", runes[i])
 	}
+}
+
+//value receiver
+//change inside the method is not visible to the caller
+func (p person) increaseAge(increaseBy int) int {
+	p.age += increaseBy
+	fmt.Println("Inside increase method ", p.age)
+	return p.age
+}
+
+//pointer receiver
+//change inside is visible to the caller
+func (p *person) decreaseAge(decreaseBy int) int {
+	p.age -= decreaseBy
+	fmt.Println("Inside decrease method ", p.age)
+	return p.age
+}
+
+//normal function
+func changeName(p person, newName string) string {
+	p.name = newName
+	return p.name
 }

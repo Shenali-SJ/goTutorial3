@@ -3,11 +3,11 @@ package structTest
 import "fmt"
 
 // Employee exported struct
-//fields are not exported
+//exported fields
 type Employee struct {
-	firstName string
-	lastName string
-	age int
+	FirstName string
+	LastName  string
+	Age       int
 }
 
 // Address exported struct
@@ -17,6 +17,8 @@ type Address struct {
 	Country string
 }
 
+// Person exported struct
+//fields are not exported
 type Person struct {
 	name string
 	age int
@@ -34,14 +36,14 @@ var Emp = struct {
 // CreateEmployee named struct
 func CreateEmployee() {
 	emp1 := Employee{
-		firstName: "John",
-		lastName: "White",
-		age: 23,
+		FirstName: "John",
+		LastName:  "White",
+		Age:       23,
 	}
 	fmt.Println(emp1)
 
 	//dot operator is used to access individual fields
-	fmt.Println("First name: ", emp1.firstName)
+	fmt.Println("First name: ", emp1.FirstName)
 
 	emp2 := Employee{"Anne", "Marie", 30}
 	fmt.Println(emp2)
