@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"goTutorial3/mapTest"
+	"goTutorial3/structTest"
 )
 
 func main() {
@@ -67,6 +68,31 @@ func main() {
 	}
 
 	printChars("Señor")
+
+	fmt.Println()
+
+	//pointers
+	var pointer *string = &word
+	fmt.Println(pointer)
+
+	size := new(int)
+	fmt.Println(size)
+
+	// de referencing a pointer
+	*size = 85
+	fmt.Println(size, *size)
+
+	fmt.Println()
+
+	//struct
+	structTest.CreateEmployee()
+
+	//anonymous struct
+	emp := structTest.Emp
+	fmt.Println(emp)
+
+	//nested struct
+	structTest.NestedStruct()
 
 }
 
