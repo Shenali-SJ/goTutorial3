@@ -12,6 +12,8 @@ type person struct {
 	country string
 }
 
+type myInt int
+
 func main() {
 
 	//variadic
@@ -130,6 +132,9 @@ func main() {
 	fmt.Println("After change name function ", person1.name)
 	fmt.Println("newName ", newName)
 
+	var num myInt = 12
+	fmt.Println("Add num ", num.addNum(myInt(3)))
+
 }
 
 func findNum(findMe int, list...int) {
@@ -184,4 +189,9 @@ func (p *person) decreaseAge(decreaseBy int) int {
 func changeName(p person, newName string) string {
 	p.name = newName
 	return p.name
+}
+
+//method with no-struct type receiver
+func (a myInt) addNum(b myInt) myInt {
+	return a + b
 }
