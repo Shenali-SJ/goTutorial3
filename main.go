@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goTutorial3/mapTest"
+)
 
 func main() {
 
@@ -17,6 +20,42 @@ func main() {
 	welcome := []string{"hello", "world"}
 	change(welcome...)
 	fmt.Println(welcome)
+
+	fmt.Println()
+
+	//map
+	ids := mapTest.StudentIds
+
+	mapTest.AddItems(ids)
+
+	mapTest.AddItems2()
+
+	//nil map
+	var map101 = mapTest.NilMap
+	fmt.Println("Nil map: ", map101)
+
+	//retrieve values for a given key
+	id := 234
+	student := ids[id]
+	fmt.Println("Student with the id ", id, " is ", student)
+	fmt.Println("Student with the id ", 7009, " is ", ids[7009])
+
+	mapTest.FindItem(2)
+
+	//iterate
+	for key, value := range ids {
+		fmt.Printf("Key: %d, value: %s \n", key, value)
+	}
+
+	//delete
+	fmt.Println("Before deleting: ", ids)
+	delete(ids, 89)
+	fmt.Println("After deleting: ", ids)
+
+	//length
+	fmt.Println("Length is ", len(ids))
+
+	
 
 }
 
