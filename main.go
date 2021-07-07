@@ -147,6 +147,19 @@ func main() {
 	v = name
 	fmt.Printf("Vowels %c", v.FindVowels())
 
+	//concrete type
+	fmt.Printf("Interface type is %T value is %v \n", v, v)
+
+	v, ok := v.(myString)
+	fmt.Println(v, ok)
+
+	fmt.Println()
+
+	findType("Hello")
+	findType(90)
+	findType(12.2)
+	findType(name)
+
 }
 
 func findNum(findMe int, list...int) {
@@ -217,4 +230,17 @@ func (s myString) FindVowels() []rune {
 		}
 	}
 	return vowels
+}
+
+func findType(i interface{}) {
+	switch i.(type) {
+	case string:
+		fmt.Println("String - ", i.(string))
+	case int:
+		fmt.Println("Int - ", i.(int))
+	case VowelFinder:
+		fmt.Println("Implements VowelFinder")
+	default:
+		fmt.Println("Unknown Type")
+	}
 }
