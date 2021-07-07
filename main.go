@@ -12,7 +12,13 @@ type person struct {
 	country string
 }
 
+// VowelFinder interface
+type VowelFinder interface {
+	FindVowels() []rune
+}
+
 type myInt int
+type myString string
 
 func main() {
 
@@ -135,6 +141,12 @@ func main() {
 	var num myInt = 12
 	fmt.Println("Add num ", num.addNum(myInt(3)))
 
+	//interfaces
+	name := myString("Shenali Jayakody")
+	var v VowelFinder
+	v = name
+	fmt.Printf("Vowels %c", v.FindVowels())
+
 }
 
 func findNum(findMe int, list...int) {
@@ -194,4 +206,15 @@ func changeName(p person, newName string) string {
 //method with no-struct type receiver
 func (a myInt) addNum(b myInt) myInt {
 	return a + b
+}
+
+// FindVowels myString implements VowelFinder interface
+func (s myString) FindVowels() []rune {
+	var vowels []rune
+	for _, rune1 := range s {
+		if rune1 == 'a' || rune1 == 'e' || rune1 == 'i' || rune1 == 'o' || rune1 == 'u' {
+			vowels = append(vowels, rune1)
+		}
+	}
+	return vowels
 }
