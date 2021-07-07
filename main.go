@@ -55,7 +55,18 @@ func main() {
 	//length
 	fmt.Println("Length is ", len(ids))
 
-	
+	var word = "Hello"
+	//print bytes - utf-8
+	for i := 0; i < len(word); i++ {
+		fmt.Printf("String %x \n", word[i])
+	}
+
+	//print characters
+	for i := 0; i < len(word); i++ {
+		fmt.Printf("Character %c \n", word[i])
+	}
+
+	printChars("Señor")
 
 }
 
@@ -76,4 +87,17 @@ func change(s ...string) {
 	s[0] = "Go"
 	s = append(s, "playground")
 	fmt.Println("S: ", s)
+}
+
+func printChars(s string) {
+	for i := 0; i < len(s); i++ {
+		fmt.Printf("Chars %c \n", s[i])
+	}
+
+	fmt.Println()
+
+	runes := []rune(s)
+	for i := 0; i < len(runes); i++ {
+		fmt.Printf("Rune %c \n", runes[i])
+	}
 }
